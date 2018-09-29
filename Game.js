@@ -18,11 +18,48 @@ export default class Game extends React.Component {
   }
 
   onSetup = async ({ scene }) => {
- 
+ 	// Give us global reference to the scene
+	this.scene = scene;
+	await this.setupBackground();
+  };
+
+  setupBackground = async () => {
+
+	const { scene } = this;
+	const { size } = scene;
+
+	const bg = await this.setupStaticNode({
+		image: Files.sprites.bg,
+		size,
+		name: 'bg',
+	});
+
+	scene.add(bg);
+
   };
 
   updateGame = delta => {
    
+  };
+
+  setupStaticNode = async ({ image, size, name }) => {
+
+	const sprite = new Sprite();
+
+	await sprite.setup({
+		image,
+		size,
+	});
+
+	// 2
+	const node = new Node({
+		sprite,
+	});
+
+	node.name = name;
+
+	return node;
+
   };
 
   render() {

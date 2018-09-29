@@ -5,6 +5,13 @@ import * as THREE from "three"; // 0.88.0
 import Expo from "expo";
 import { Group, Node, Sprite, SpriteView } from "./GameKit";
 
+const SPEED = 1.6;
+const GRAVITY = 1100;
+const FLAP = 320;
+const SPAWN_RATE = 2600;
+const OPENING = 120;
+const GROUND_HEIGHT = 64;
+
 export default class Game extends React.Component {
  
   componentWillMount() {
